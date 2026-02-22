@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartRoute | Dynamic Route Optimization</title>
+    <meta name="description"
+        content="AI-powered dynamic route optimization for enterprise logistics and personal travel.">
+    <link rel="stylesheet" href="style.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Maps Places API -->
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBaLsFuR13iO1lbM0jh9MrjRaxEBh-Ph6o&libraries=places&callback=initAutocomplete"
+        async defer></script>
+</head>
+
+<body>
+    <div class="grid-bg"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <header id="main-header">
+        <nav class="container">
+            <a href="#landing" class="logo-wrapper" onclick="navigateTo('landing')">
+                <img src="logo.png" alt="SmartRoute Logo" class="app-logo">
+                <span class="logo-text">SmartRoute</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#landing" class="nav-link active" id="nav-landing" onclick="navigateTo('landing')">Home</a>
+                </li>
+                <li><a href="#optimizer" class="nav-link" id="nav-optimizer" onclick="navigateTo('optimizer')">Dynamic
+                        Optimizer</a></li>
+                <li><a href="#simulation" class="nav-link" id="nav-simulation" onclick="navigateTo('simulation')">Fleet
+                        Simulation</a></li>
+            </ul>
+            <button class="btn btn-primary" onclick="navigateTo('optimizer')">Get Started</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Landing Page Section -->
+        <section id="landing" class="active">
+            <div class="container hero">
+                <div class="hero-content">
+                    <span class="hero-badge">Next-Gen Logistics</span>
+                    <h1 class="hero-title text-gradient">Master the Grid <br>with SmartRoute AI.</h1>
+                    <p class="hero-description">The world's most advanced dynamic route optimization engine. Built for
+                        efficiency, sustainability, and absolute precision. Reach net-zero emissions with real-time AI
+                        logic.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="btn btn-primary" onclick="navigateTo('optimizer')">Launch Optimizer</button>
+                        <button class="btn btn-outline" style="margin-left: 15px;"
+                            onclick="navigateTo('simulation')">View Simulation</button>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <!-- 3D Anime-style stacked scene -->
+                    <div class="anime-scene">
+
+                        <!-- Back card: Global Analytics -->
+                        <div class="anime-card anime-card-back">
+                            <div class="anime-card-tag">🌍 Global Fleet Intelligence</div>
+                            <img src="image/undraw_designer_efwz.png" alt="Global Route Analytics" class="anime-img">
+                            <div class="anime-card-text">
+                                <p class="anime-caption">Real-time fleet monitoring across <strong>50+
+                                        countries</strong></p>
+                            </div>
+                        </div>
+
+                        <!-- Front card: Location Tracking -->
+                        <div class="anime-card anime-card-front">
+                            <div class="anime-card-tag">📍 Live Route Tracking</div>
+                            <img src="image/undraw_my-location_dcug.png" alt="Live Location Tracking" class="anime-img">
+                            <div class="anime-card-text">
+                                <p class="anime-caption">AI-powered precision routing, updated <strong>every
+                                        12ms</strong></p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Stats -->
+                        <div class="stat-float stat-1">
+                            <span class="stat-label">Fuel Saved</span>
+                            <span class="stat-val">30%</span>
+                        </div>
+                        <div class="stat-float stat-2">
+                            <span class="stat-label">CO₂ Reduced</span>
+                            <span class="stat-val">1.2k kg</span>
+                        </div>
+                        <div class="stat-float stat-3">
+                            <span class="stat-label">Routes/sec</span>
+                            <span class="stat-val">8,400+</span>
+                        </div>
+
+                        <!-- Status bar -->
+                        <div class="visual-overlay">
+                            <div class="status-indicator">
+                                <div class="pulse"></div>
+                                <span style="letter-spacing: 1px; text-transform: uppercase; font-size: 0.7rem;">AI
+                                    Engine: Operational</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Optimizer Section -->
+        <section id="optimizer">
+            <div class="container">
+                <div class="glass-card optimizer-card">
+                    <div class="card-title">
+                        <i data-lucide="map-pin" style="color: var(--clr-accent);"></i>
+                        <h2>Route Optimization Engine</h2>
+                    </div>
+
+                    <div class="step-indicator">
+                        <div class="step-dot active" id="dot-1"></div>
+                        <div class="step-dot" id="dot-2"></div>
+                        <div class="step-dot" id="dot-3"></div>
+                    </div>
+
+                    <!-- Step 1: Locations -->
+                    <div class="form-step active" id="step-1">
+                        <h3 style="margin-bottom: 1.5rem;">Where are you heading?</h3>
+                        <div class="input-grid">
+                            <div class="input-group">
+                                <label class="input-label">Start Location</label>
+                                <div class="autocomplete-wrapper">
+                                    <i data-lucide="map-pin" class="input-icon"></i>
+                                    <input type="text" class="input-control input-with-icon"
+                                        placeholder="Search departure city or address..." id="start-loc"
+                                        autocomplete="off">
+                                </div>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">End Location</label>
+                                <div class="autocomplete-wrapper">
+                                    <i data-lucide="navigation" class="input-icon"></i>
+                                    <input type="text" class="input-control input-with-icon"
+                                        placeholder="Search destination city or address..." id="end-loc"
+                                        autocomplete="off">
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: flex-end;">
+                            <button class="btn btn-primary" onclick="nextStep(2)">Configure Vehicle <i
+                                    data-lucide="arrow-right" style="margin-left: 8px; width: 18px;"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 2: Preferences -->
+                    <div class="form-step" id="step-2">
+                        <h3 style="margin-bottom: 1.5rem;">Vehicle & Efficiency Parameters</h3>
+                        <div class="input-grid">
+                            <div class="input-group">
+                                <label class="input-label">Vehicle Mode</label>
+                                <select class="input-control select-control" id="v-mode">
+                                    <option value="car">Passenger Car</option>
+                                    <option value="bike">Motorbike</option>
+                                    <option value="van">Delivery Van</option>
+                                    <option value="truck">Heavy Truck</option>
+                                    <option value="bus">Public Bus</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Fuel Type</label>
+                                <select class="input-control select-control" id="f-type">
+                                    <option value="petrol">Petrol</option>
+                                    <option value="diesel">Diesel</option>
+                                    <option value="Electric">Electric (EV)</option>
+                                    <option value="CNG">CNG</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Cargo Weight (kg)</label>
+                                <input type="number" class="input-control" placeholder="0" id="cargo-weight">
+                            </div>
+                            <div class="input-group">
+                                <label class="input-label">Driving Style</label>
+                                <select class="input-control select-control" id="d-style">
+                                    <option value="balanced">Balanced</option>
+                                    <option value="eco">Eco-Friendly (Paced)</option>
+                                    <option value="sport">Dynamic (Fast)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="toggle-options" style="margin-bottom: 2rem;">
+                            <div class="switch-box">
+                                <div>
+                                    <p style="font-weight: 600;">Real-time Traffic</p>
+                                    <p style="font-size: 0.75rem; color: var(--clr-text-muted);">Live congestion updates
+                                    </p>
+                                </div>
+                                <div class="switch" id="traffic-toggle" onclick="toggleSwitch(this)"></div>
+                            </div>
+                            <div class="switch-box">
+                                <div>
+                                    <p style="font-weight: 600;">Auto Re-route</p>
+                                    <p style="font-size: 0.75rem; color: var(--clr-text-muted);">Automatic update if
+                                        delay > 10%</p>
+                                </div>
+                                <div class="switch" id="reroute-toggle" onclick="toggleSwitch(this)"></div>
+                            </div>
+                        </div>
+
+                        <div class="input-group" style="margin-bottom: 2.5rem;">
+                            <label class="input-label" style="margin-bottom: 12px;">Optimization Priority</label>
+                            <div class="chips-container" id="priority-chips">
+                                <div class="chip active" onclick="selectChip(this, 'time')">⏱ Time Priority</div>
+                                <div class="chip" onclick="selectChip(this, 'fuel')">⛽ Fuel Priority</div>
+                                <div class="chip" onclick="selectChip(this, 'eco')">🌍 Eco Priority</div>
+                                <div class="chip" onclick="selectChip(this, 'balanced')">⚖ Balanced Mode</div>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; justify-content: space-between;">
+                            <button class="btn btn-outline" onclick="nextStep(1)">Back</button>
+                            <button class="btn btn-primary" onclick="calculateRoute()">Generate Smart Plan <i
+                                    data-lucide="zap" style="margin-left: 8px; width: 18px;"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Step 3: Results -->
+                    <div class="form-step" id="step-3">
+                        <div class="results-page">
+                            <div class="results-grid">
+                                <div class="route-column">
+                                    <h3 style="margin-bottom: 1.5rem;">AI Recommended Routes</h3>
+                                    <div class="route-list" id="route-output-list">
+                                        <!-- Routes will be injected here -->
+                                    </div>
+                                </div>
+                                <div class="simulation-view">
+                                    <div class="glass-card simulation-panel">
+                                        <div
+                                            style="display: flex; justify-content: space-between; align-items: center;">
+                                            <h3>Impact Simulation</h3>
+                                            <button class="btn btn-outline"
+                                                style="padding: 8px 16px; font-size: 0.8rem;" onclick="runSimulation()">
+                                                <i data-lucide="play" style="width: 14px; margin-right: 6px;"></i>
+                                                Refresh Simulation
+                                            </button>
+                                        </div>
+                                        <div class="table-wrapper">
+                                            <table id="sim-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Route</th>
+                                                        <th>ETA</th>
+                                                        <th>Fuel Used</th>
+                                                        <th>CO₂ (kg)</th>
+                                                        <th>Risk Score</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="sim-table-body">
+                                                    <!-- Table rows will be injected here -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="explanation-panel" id="exp-panel">
+                                            <p style="font-weight: 700; color: var(--clr-primary); margin-bottom: 5px;">
+                                                Why Route A?</p>
+                                            <p id="exp-text" style="font-size: 0.9rem; color: var(--clr-text-muted);">
+                                                Route A offers the best balance between time efficiency and fuel
+                                                consumption. It avoids the accident-prone zone on Highway 4.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="margin-top: 2rem; display: flex; justify-content: center;">
+                            <button class="btn btn-outline" onclick="nextStep(2)">Modify Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simulation Section -->
+        <section id="simulation">
+            <div class="container">
+                <div class="simulation-header" style="text-align: center; margin-bottom: 4rem;">
+                    <span class="hero-badge">Enterprise Engine</span>
+                    <h2 class="hero-title text-gradient" style="font-size: 3.5rem;">Fleet Logistics Simulation</h2>
+                    <p class="hero-description" style="max-width: 800px; margin: 0 auto;">Simulate complex multi-vehicle
+                        deployments across global regions with precision-engineered AI intelligence.</p>
+                </div>
+
+                <div class="glass-card simulation-hero"
+                    style="padding: 4rem; text-align: center; border: 1px solid rgba(197, 160, 89, 0.1);">
+                    <div class="sim-icon-wrapper" style="margin-bottom: 2rem;">
+                        <i data-lucide="layers" style="width: 64px; height: 64px; color: var(--clr-accent);"></i>
+                    </div>
+                    <h3 style="font-size: 2rem; margin-bottom: 1rem;">Ready for Integration</h3>
+                    <p style="color: var(--clr-text-muted); max-width: 600px; margin: 0 auto 2.5rem;">Connect your
+                        enterprise fleet telemetry to unlock real-time predictive modeling and risk assessment modules.
+                    </p>
+                    <div style="display: flex; justify-content: center; gap: 20px;">
+                        <button class="btn btn-primary">Connect API</button>
+                        <button class="btn btn-outline">Documentation</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer removed as per user request -->
+
+    <!-- Real-time Carbon Tracking Modal/Bar -->
+    <div class="carbon-bar glass" id="carbon-tracker">
+        <div class="pulse"></div>
+        <div style="display: flex; flex-direction: column;">
+            <span
+                style="font-size: 0.7rem; color: var(--clr-text-muted); text-transform: uppercase; font-weight: 800;">Real-time
+                Carbon Tracking</span>
+            <span class="carbon-value" id="carbon-live">0.00 kg</span>
+        </div>
+        <div style="border-left: 1px solid rgba(255,255,255,0.1); padding-left: 20px;">
+            <span style="display: block; font-size: 0.7rem; color: #34d399; font-weight: 800;">AUTO RE-ROUTE
+                ACTIVE</span>
+            <span style="font-size: 0.85rem;" id="tracking-status">Efficiency: 98.4%</span>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+fastapi
+uvicorn
+googlemaps
+ortools
+pydantic
+python-dotenv
